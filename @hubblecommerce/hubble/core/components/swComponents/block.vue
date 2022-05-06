@@ -93,7 +93,7 @@ specific styling for elements dependent on their parent block
         }
     }
 
-    p a {
+    p a:not(.btn) {
         @include text-link;
     }
 

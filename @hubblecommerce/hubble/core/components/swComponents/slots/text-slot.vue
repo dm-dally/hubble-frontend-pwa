@@ -55,7 +55,7 @@ export default {
         margin-top: 10px;
     }
 
-    div > a {
+    div > a:not(.btn) {
         @include text-link;
     }
 
