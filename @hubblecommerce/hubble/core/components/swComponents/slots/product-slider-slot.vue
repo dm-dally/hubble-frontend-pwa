@@ -101,6 +101,8 @@ export default {
     }
 
     &.is--full-width {
+        overflow: hidden;
+
         .cms-element-alignment {
             &::before,
             &::after {
@@ -130,7 +132,6 @@ export default {
 
     .cms-element-alignment {
         position: relative;
-        margin: -10px;
     }
 
     .cms-element-title {

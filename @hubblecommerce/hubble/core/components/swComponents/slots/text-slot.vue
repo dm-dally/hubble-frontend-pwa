@@ -1,5 +1,5 @@
 <template>
-    <div :class="[elementClass, { 'has-vertical-alignment': verticalAlign }]">
+    <div :class="[elementClass, { 'has-vertical-alignment': verticalAlign, 'has-data-mapping': hasProductDataMapping }]">
         <template v-if="verticalAlign">
             <div class="cms-element-alignment" :class="verticalAlign" v-html="rawHtml" />
         </template>
@@ -18,6 +18,9 @@ export default {
     mixins: [slotMixins],
 
     computed: {
+        hasProductDataMapping() {
+            return this.content && this.content.config && this.content.config.content && this.content.config.content.source === 'mapped';
+        },
         rawHtml() {
             return this.content && this.content.data && this.content.data.content;
         },
@@ -41,9 +44,29 @@ export default {
 </script>
 
 <style lang="scss">
+@import '~assets/scss/hubble/links';
+
 .cms-element-text {
     h2, h3, h4, h5, h6 {
         margin-bottom: 20px;
+    }
+
+    div + div {
+        margin-top: 10px;
+    }
+
+    div > a {
+        @include text-link;
+    }
+
+    .cms-element-alignment {
+        flex-grow: 1;
+    }
+
+    .cms-block-text-on-image &.has-data-mapping {
+        color: white;
+        text-align: center;
+        font-size: 30px;
     }
 
     .cms-block-center-text & {

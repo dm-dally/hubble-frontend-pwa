@@ -1,5 +1,5 @@
 <template>
-    <div class="cms-block" :class="[cssClass, blockClass, backgroundImageExists]" :style="backgroundStyles">
+    <div class="cms-block" :class="[cssClass, blockClass, backgroundImageExists, sizingMode]" :style="backgroundStyles">
         <div class="cms-block-container">
             <div v-if="content.name" :class="{ container: sizingMode != null ? sizingMode['full-width'] : 'container' }">
                 <h2 v-if="content.name" class="cms-block-headline headline-1">{{ content.name }}</h2>
@@ -70,6 +70,7 @@ export default {
 
 <style lang="scss">
 @import '~assets/scss/hubble/variables';
+@import '~assets/scss/hubble/links';
 
 /*
 CMS blocks
@@ -93,16 +94,17 @@ specific styling for elements dependent on their parent block
     }
 
     p a {
-        text-decoration: underline;
-
-        &:hover,
-        &:focus {
-            text-decoration: none;
-        }
+        @include text-link;
     }
 
     hr {
         margin: 10px 0;
+    }
+
+    &.full-width {
+        .cms-row {
+            margin: 0;
+        }
     }
 }
 

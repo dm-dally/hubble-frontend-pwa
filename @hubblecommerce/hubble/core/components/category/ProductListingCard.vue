@@ -12,7 +12,7 @@
                         <span
                             v-if="itemData.isNew"
                             class="product-badge badge-secondary"
-                            v-text="'New'"
+                            v-text="'new'"
                         />
                         <span
                             v-if="itemData.markAsTopseller"
@@ -220,6 +220,7 @@ export default {
         height: 100%;
         -o-object-fit: contain;
         object-fit: contain;
+        max-height: 200px;
     }
 
     .actions {
@@ -256,7 +257,7 @@ export default {
 
         .sale-price {
             color: $error-accent;
-            margin-right: 10px;
+            margin-right: 8px;
         }
 
         .unit-price-wrp {
@@ -303,7 +304,7 @@ export default {
     }
 
     .product-price {
-        @include font-size($text-font-sizes);
+        @include font-size($h5-font-sizes);
         font-weight: $font-weight-bold;
         color: $text-primary;
         margin-bottom: 10px;
@@ -350,7 +351,7 @@ export default {
             margin-bottom: 5px;
         }
         .product-name {
-            margin-bottom: 32px;
+            margin-bottom: 14px;
         }
     }
 }
@@ -383,10 +384,16 @@ export default {
 @media (min-width: 1200px) {
     .product-card {
         .card-media {
+            min-height: 265px;
+
             .img-listing img {
                 max-width: 200px;
                 max-height: 200px;
             }
+        }
+
+        .product-image {
+            max-height: 265px;
         }
     }
 }
@@ -394,11 +401,16 @@ export default {
 @media (min-width: 1600px) {
     .product-card {
         .card-media {
-            min-height: 230px;
+            min-height: 330px;
+
             .img-listing img {
                 max-width: 250px;
                 max-height: 200px;
             }
+        }
+
+        .product-image {
+            max-height: 330px;
         }
     }
 }
